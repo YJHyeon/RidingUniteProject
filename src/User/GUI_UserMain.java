@@ -10,6 +10,13 @@ package User;
  */
 public class GUI_UserMain extends javax.swing.JFrame {
 
+    String id;
+
+    public GUI_UserMain(String id) {
+        this.id = id;
+        initComponents();
+    }
+
     /**
      * Creates new form GUI_UserMain
      */

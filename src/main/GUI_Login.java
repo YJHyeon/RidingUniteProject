@@ -4,7 +4,9 @@
  */
 package main;
 
+import Admin.GUI_Admin;
 import User.GUI_UserMain;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,17 +32,17 @@ public class GUI_Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("Password");
+        jTextField2.setText("Password");
 
-        jTextField2.setText("ID");
+        jTextField1.setText("ID");
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 0, 24)); // NOI18N
         jLabel1.setText("로그인");
@@ -66,8 +68,8 @@ public class GUI_Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                    .addComponent(jTextField2))
                 .addGap(102, 102, 102))
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
@@ -86,9 +88,9 @@ public class GUI_Login extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
-                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -103,15 +105,20 @@ public class GUI_Login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String id = jTextField2.getText();
-        if (jTextField2.equals("1")) {
-            GUI_UserMain form = new GUI_UserMain();
+        String pw = jTextField1.getText();
+        
+        SignIn login = new SignIn();
+        
+        if (login.Login(id, pw) == 0) {
+            GUI_Admin form = new GUI_Admin(id);
+            form.setVisible(true);
+            setVisible(false);
+        } else if (login.Login(id, pw) == 1) {
+            GUI_UserMain form = new GUI_UserMain(id);
             form.setVisible(true);
             setVisible(false);
         }
-        else{
-		JOptionPane aa=new JOptionPane();
-		aa.showMessageDialog(null, "id가 잘못되었습니다.");
-        }
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

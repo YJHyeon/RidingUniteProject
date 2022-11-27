@@ -9,6 +9,11 @@ package Admin;
  * @author 915-22
  */
 public class GUI_Admin extends javax.swing.JFrame {
+    String id;
+    public GUI_Admin(String id) {
+        this.id = id;
+        initComponents();
+    }
 
     /**
      * Creates new form GUI_Admin
