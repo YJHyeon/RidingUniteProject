@@ -52,7 +52,7 @@ public class UserDAO {
         PreparedStatement pstmt = null;
         //ResultSet rs = null;
 
-        String sql = "insert into MEMBER (ORINO, NAME, PASSWD, TEL, EMAIL) values(?,?,?,?,?)";
+        String sql = "insert into Member (ID, NAME, PASSWD, TEL, EMAIL,ADMINCHK) values(?,?,?,?,?,1)";
 
         pstmt = conn.prepareStatement(sql);
 
