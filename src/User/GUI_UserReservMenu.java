@@ -77,9 +77,7 @@ public class GUI_UserReservMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        GUI_UserMain form = new GUI_UserMain();
-        form.setVisible(true);
-        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

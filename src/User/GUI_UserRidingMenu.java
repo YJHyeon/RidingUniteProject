@@ -10,6 +10,13 @@ package User;
  */
 public class GUI_UserRidingMenu extends javax.swing.JFrame {
 
+    String id;
+
+    public GUI_UserRidingMenu(String id) {
+        this.id = id;
+        initComponents();
+    }
+
     /**
      * Creates new form GUI_UserRidingMenu
      */
@@ -76,17 +83,16 @@ public class GUI_UserRidingMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
+                        .addGap(122, 122, 122)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton4)
-                                .addComponent(jButton3))))
+                            .addComponent(jButton4)
+                            .addComponent(jButton3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(jButton5)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
@@ -115,6 +121,8 @@ public class GUI_UserRidingMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        GUI_UserRoadInquiry form = new GUI_UserRoadInquiry(id);
+        form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -131,9 +139,7 @@ public class GUI_UserRidingMenu extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        GUI_UserMain form = new GUI_UserMain();
-        form.setVisible(true);
-        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
