@@ -70,21 +70,19 @@ public class UserDAO {
         return result;
     }
 
-    public void updateData(String id, String name, String pw, String tel, String email) throws NamingException, SQLException, ClassNotFoundException {
+    public void updateData(String id, String pw) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        String sql = "update MEMBER set NAME=?,PASSWD=?,TEL=?,EMAIL=? where ORINO=?";
+        String sql = "update Member set PASSWD=? where ID =?";
 
         pstmt = conn.prepareStatement(sql);
 
-        pstmt.setString(1, name);
+        pstmt.setString(1, id);
         pstmt.setString(2, pw);
-        pstmt.setString(3, tel);
-        pstmt.setString(4, email);
-        pstmt.setString(5, id);
+
         int r = pstmt.executeUpdate();
 
     }
