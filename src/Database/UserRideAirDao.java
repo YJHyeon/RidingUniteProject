@@ -22,7 +22,7 @@ public class UserRideAirDao {
 
         ArrayList<UserRideAirObj> users = new ArrayList<UserRideAirObj>();
         UserRideAirObj user = null;
-        String sql = "SELECT * FROM RideAir WHERE gugun like ?";
+        String sql = "SELECT * FROM Rideair WHERE gugun like ?";
 
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1,"%"+ gugun+"%");
@@ -39,4 +39,30 @@ public class UserRideAirDao {
         return users;
 
     }
+    public int insertData(String gugun, String pumpGubun, String pumpCnt, String spot) throws NamingException, SQLException, ClassNotFoundException {
+
+        int result = 0;
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        //ResultSet rs = null;
+
+        String sql = "insert into RideAir (gugun, pumpGubun, pumpCnt, spot) values (?,?,?,?)";
+
+        pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, gugun);
+        pstmt.setString(2, pumpGubun);
+        pstmt.setString(3, pumpCnt);
+        pstmt.setString(4, spot);
+        result = pstmt.executeUpdate();
+
+        //rs.close();
+        pstmt.close();
+        DBConn.close();
+
+        return result;
+    }
+    
 }
+
