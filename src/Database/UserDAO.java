@@ -70,7 +70,7 @@ public class UserDAO {
         return result;
     }
 
-    public void updateData(String id, String pw) throws NamingException, SQLException, ClassNotFoundException {
+    public void updateData(String pw, String id) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
         PreparedStatement pstmt = null;
@@ -80,8 +80,8 @@ public class UserDAO {
 
         pstmt = conn.prepareStatement(sql);
 
-        pstmt.setString(1, id);
-        pstmt.setString(2, pw);
+        pstmt.setString(1, pw);
+        pstmt.setString(2, id);
 
         int r = pstmt.executeUpdate();
 
@@ -93,7 +93,7 @@ public class UserDAO {
         PreparedStatement pstmt = null;
         //ResultSet rs = null;
 
-        String sql = "DELETE FROM MEMBER WHERE ORINO = ?";
+        String sql = "DELETE FROM Member WHERE ID = ?";
 
         pstmt = conn.prepareStatement(sql);
 

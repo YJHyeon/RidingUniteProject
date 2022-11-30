@@ -68,6 +68,11 @@ public class GUI_UserInfor extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("회원탈퇴");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("비밀번호 변경");
         jButton2.setActionCommand("비밀번호 \\n 변경");
@@ -140,7 +145,7 @@ public class GUI_UserInfor extends javax.swing.JFrame {
             M.showMessageDialog(null, "비밀번호를 입력해주세요.");
         } else {
             try {
-                user.updateData(pw,id);       
+                user.updateData(pw, id);
                 JOptionPane.showMessageDialog(null, "Password가 수정 되었습니다. ");
             } catch (NamingException ex) {
                 Logger.getLogger(GUI_UserInfor.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,6 +156,24 @@ public class GUI_UserInfor extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            UserDAO user = new UserDAO();
+            
+            user.deleteData(id);
+            JOptionPane.showMessageDialog(null, "탈퇴 성공");
+            System.exit(0);
+        } catch (NamingException ex) {
+            Logger.getLogger(GUI_UserInfor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_UserInfor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_UserInfor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
