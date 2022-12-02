@@ -50,5 +50,26 @@ public class UserReserveDao {
         return users;
 
     }
+       /* public void reserve2(String id, String gugun, String start, String end, String number, String date, chk) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        //ResultSet rs = null;
+
+        String sql = "INSERT INTO RESERVATION( LABNO, RTIME, RDAY, GROUPID, ORINO) VALUES('NULL' , ?, ?, ?, ?)";
+
+        pstmt = conn.prepareStatement(sql);
+
+        pstmt.setInt(1, rtime);
+        pstmt.setString(2, date);
+        pstmt.setString(3, group);
+        pstmt.setString(4, id);
+
+        int r = pstmt.executeUpdate();
+        
+        //rs.close();
+        pstmt.close();
+        DBConn.close();
+    }*/
 
 }

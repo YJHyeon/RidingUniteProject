@@ -46,6 +46,7 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,35 +80,46 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
+        jLabel5.setText("자전거 대여 예약");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addGap(6, 6, 6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -123,11 +135,11 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -140,20 +152,90 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //SignUp signup = new SignUp();
-        try {
-            int gugun = jComboBox1.getSelectedIndex();
-            int start = jComboBox2.getSelectedIndex();
-            int end = jComboBox3.getSelectedIndex();
-            int number = jComboBox4.getSelectedIndex();
-
-           // signup.signup(gugun, start, end, number);
-
-            JOptionPane.showMessageDialog(null, "예약 성공", "예약", 1);
-        } catch (Exception e) {
-            jLabel2.setText("입력하신 정보가 맞지 않습니다.");
-            jLabel2.setForeground(Color.red);
+        int A = jComboBox1.getSelectedIndex();
+        int B = jComboBox2.getSelectedIndex();
+        int C = jComboBox3.getSelectedIndex();
+        int D = jComboBox4.getSelectedIndex();
+        if (A == 0) {
+            String gugun = "사상구";
+            System.out.println(gugun);
+        } else if (A == 1) {
+            String gugun = "해운대구";
+        } else if (A == 2) {
+            String gugun = "진구";
+        } else if (A == 3) {
+            String gugun = "연제구";
+        } else if (A == 4) {
+            String gugun = "수영구";
+        } else if (A == 5) {
+            String gugun = "동래구";
+        } else if (A == 6) {
+            String gugun = "금정구";
+        } else if (A == 7) {
+            String gugun = "강서구";
+        } else if (A == 8) {
+            String gugun = "남구";
+        } else if (A == 9) {
+            String gugun = "사하구";
+        } else {
+            String gugun = "서구";
         }
+        if (B == 0) {
+            String start = "9";
+            System.out.println(start);
+        } else if (B == 1) {
+            String start = "10";
+            System.out.println(start);
+        } else if (B == 2) {
+            String start = "11";
+        } else if (B == 3) {
+            String start = "12";
+        } else if (B == 4) {
+            String start = "13";
+        } else if (B == 5) {
+            String start = "14";
+        } else if (B == 6) {
+            String start = "15";
+        } else if (B == 7) {
+            String start = "16";
+        } else if (B == 8) {
+            String start = "17";
+        } else if (B == 9) {
+            String start = "18";
+        }
+        if (C == 0) {
+            String end = "10";
+            System.out.println(end);
+        } else if (C == 1) {
+            String end = "11";
+            System.out.println(end);
+        } else if (C == 2) {
+            String end = "12";
+        } else if (C == 3) {
+            String end = "13";
+        } else if (C == 4) {
+            String end = "14";
+        } else if (C == 5) {
+            String end = "15";
+        } else if (C == 6) {
+            String end = "16";
+        } else if (C == 7) {
+            String end = "17";
+        } else if (C == 8) {
+            String end = "18";
+        }
+        if (D == 0) {
+            String number = "1";
+            System.out.println(number);
+        } else if (D == 1) {
+            String number = "2";
+            System.out.println(number);
+        } else if (D == 2) {
+            String number = "3";
+        } else if (D == 3) {
+            String number = "4";
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -202,5 +284,6 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package RideAir;
+package Database;
 
-import Database.DBConn;
+
 import java.sql.*;
 import javax.naming.NamingException;
 import java.util.*;
@@ -22,7 +22,7 @@ public class UserRideAirDao {
 
         ArrayList<UserRideAirObj> users = new ArrayList<UserRideAirObj>();
         UserRideAirObj user = null;
-        String sql = "SELECT * FROM Rideair WHERE gugun like ?";
+        String sql = "SELECT * FROM RideAir WHERE gugun like ?";
 
         pstmt = conn.prepareStatement(sql);
         pstmt.setString(1,"%"+ gugun+"%");

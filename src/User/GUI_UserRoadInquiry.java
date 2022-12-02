@@ -83,7 +83,7 @@ public class GUI_UserRoadInquiry extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("자전거 도로 정보 조회");
 
