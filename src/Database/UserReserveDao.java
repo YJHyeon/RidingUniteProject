@@ -39,37 +39,44 @@ public class UserReserveDao {
             user.setEnd(rs.getString("end"));
             user.setNumber(rs.getString("number"));
             user.setDate(rs.getString("date"));
-            if (rs.getString("chk").equals(0)) {
+            if (rs.getString("chk").equals("0")) {
                 user.setChk("미승인");
-            } else {
+            } else if (rs.getString("chk").equals("1")) {
                 user.setChk("승인");
             }
+            users.add(user);
         }
-        users.add(user);
+
+        rs.close();
+        pstmt.close();
+        DBConn.close();
 
         return users;
 
     }
-       /* public void reserve2(String id, String gugun, String start, String end, String number, String date, chk) throws NamingException, SQLException, ClassNotFoundException {
+
+    public void reserve2(String id, String gugun, String start, String end, String number, String date) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
         PreparedStatement pstmt = null;
         //ResultSet rs = null;
 
-        String sql = "INSERT INTO RESERVATION( LABNO, RTIME, RDAY, GROUPID, ORINO) VALUES('NULL' , ?, ?, ?, ?)";
+        String sql = "INSERT INTO RidingReservation(ID, Gugun, Start, End, Number, Date, CHK) VALUES(?, ?, ?, ?, ? ,? , 0)";
 
         pstmt = conn.prepareStatement(sql);
 
-        pstmt.setInt(1, rtime);
-        pstmt.setString(2, date);
-        pstmt.setString(3, group);
-        pstmt.setString(4, id);
+        pstmt.setString(1, id);
+        pstmt.setString(2, gugun);
+        pstmt.setString(3, start);
+        pstmt.setString(4, end);
+        pstmt.setString(5, number);
+        pstmt.setString(6, date);
 
         int r = pstmt.executeUpdate();
-        
+
         //rs.close();
         pstmt.close();
         DBConn.close();
-    }*/
+    }
 
 }

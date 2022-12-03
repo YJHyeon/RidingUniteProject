@@ -64,5 +64,29 @@ public class UserRideAirDao {
         return result;
     }
     
+     public void deleteData(String gugun, String pumpGubun, String pumpCnt, String spot) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        //ResultSet rs = null;
+
+        String sql = "DELETE FROM RideAir WHERE gugun=? AND pumpGubun=? AND pumpCnt = ? AND SPOT =?;";
+
+        pstmt = conn.prepareStatement(sql);
+        
+        pstmt.setString(1, gugun);
+        pstmt.setString(2, pumpGubun);
+        pstmt.setString(3, pumpCnt);
+        pstmt.setString(4, spot);
+
+        //pstmt.setString(4, spot);
+
+        int count = pstmt.executeUpdate();
+
+        pstmt.close();
+        DBConn.close();
+
+    }
+    
 }
 

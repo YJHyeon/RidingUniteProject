@@ -4,6 +4,7 @@
  */
 package Database;
 
+import Database.DBConn;
 import java.sql.*;
 import javax.naming.NamingException;
 import java.util.*;
@@ -39,4 +40,54 @@ public class UserRideRoadDao {
         return users;
 
     }
+
+
+    public int insertData(String gugunNm, String startSpot, String endSpot, String total) throws NamingException, SQLException, ClassNotFoundException {
+
+        int result = 0;
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        //ResultSet rs = null;
+
+        String sql = "insert into rideroad (gugunNm, startSpot, endSpot, total) values (?,?,?,?)";
+
+        pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, gugunNm);
+        pstmt.setString(2, startSpot);
+        pstmt.setString(3, endSpot);
+        pstmt.setString(4, total);
+        result = pstmt.executeUpdate();
+
+        //rs.close();
+        pstmt.close();
+        DBConn.close();
+
+        return result;
+    }
+    public void deleteData(String gugunNm, String startSpot, String endSpot, String total) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        //ResultSet rs = null;
+
+        String sql = "DELETE FROM rideroad WHERE gugunNm=? AND pumpGubun=? AND pumpCnt = ? AND SPOT =?;";
+
+        pstmt = conn.prepareStatement(sql);
+        
+        pstmt.setString(1, gugunNm);
+        pstmt.setString(2, startSpot);
+        pstmt.setString(3, endSpot);
+        pstmt.setString(4, total);
+
+        //pstmt.setString(4, spot);
+
+        int count = pstmt.executeUpdate();
+
+        pstmt.close();
+        DBConn.close();
+
+    }
+    
 }

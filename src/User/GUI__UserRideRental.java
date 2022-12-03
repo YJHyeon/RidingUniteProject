@@ -4,8 +4,14 @@
  */
 package User;
 
+import Database.UserReserveDao;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -47,8 +53,15 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "사상구", "해운대구", "진구", "북구", "연제구", "수영구", "동래구", "금정구", "강서구", "남구", "사하구", "서구" }));
 
@@ -83,6 +96,10 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
         jLabel5.setText("자전거 대여 예약");
 
+        jLabel6.setText("날짜");
+
+        jTextField1.setText("0000-00-00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,13 +122,15 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField1))))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,7 +154,11 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -143,6 +166,7 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -151,92 +175,111 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int A = jComboBox1.getSelectedIndex();
-        int B = jComboBox2.getSelectedIndex();
-        int C = jComboBox3.getSelectedIndex();
-        int D = jComboBox4.getSelectedIndex();
-        if (A == 0) {
-            String gugun = "사상구";
-            System.out.println(gugun);
-        } else if (A == 1) {
-            String gugun = "해운대구";
-        } else if (A == 2) {
-            String gugun = "진구";
-        } else if (A == 3) {
-            String gugun = "연제구";
-        } else if (A == 4) {
-            String gugun = "수영구";
-        } else if (A == 5) {
-            String gugun = "동래구";
-        } else if (A == 6) {
-            String gugun = "금정구";
-        } else if (A == 7) {
-            String gugun = "강서구";
-        } else if (A == 8) {
-            String gugun = "남구";
-        } else if (A == 9) {
-            String gugun = "사하구";
-        } else {
-            String gugun = "서구";
-        }
-        if (B == 0) {
-            String start = "9";
-            System.out.println(start);
-        } else if (B == 1) {
-            String start = "10";
-            System.out.println(start);
-        } else if (B == 2) {
-            String start = "11";
-        } else if (B == 3) {
-            String start = "12";
-        } else if (B == 4) {
-            String start = "13";
-        } else if (B == 5) {
-            String start = "14";
-        } else if (B == 6) {
-            String start = "15";
-        } else if (B == 7) {
-            String start = "16";
-        } else if (B == 8) {
-            String start = "17";
-        } else if (B == 9) {
-            String start = "18";
-        }
-        if (C == 0) {
-            String end = "10";
-            System.out.println(end);
-        } else if (C == 1) {
-            String end = "11";
-            System.out.println(end);
-        } else if (C == 2) {
-            String end = "12";
-        } else if (C == 3) {
-            String end = "13";
-        } else if (C == 4) {
-            String end = "14";
-        } else if (C == 5) {
-            String end = "15";
-        } else if (C == 6) {
-            String end = "16";
-        } else if (C == 7) {
-            String end = "17";
-        } else if (C == 8) {
-            String end = "18";
-        }
-        if (D == 0) {
-            String number = "1";
-            System.out.println(number);
-        } else if (D == 1) {
-            String number = "2";
-            System.out.println(number);
-        } else if (D == 2) {
-            String number = "3";
-        } else if (D == 3) {
-            String number = "4";
+
+        try {
+            // TODO add your handling code here:
+            int A = jComboBox1.getSelectedIndex();
+            int B = jComboBox2.getSelectedIndex();
+            int C = jComboBox3.getSelectedIndex();
+            int D = jComboBox4.getSelectedIndex();
+            String E = jTextField1.getText();
+            String gugun = "A";
+            String start = "B";
+            String end = "C";
+            String number = "D";
+            if (A == 0) {
+                gugun = "사상구";
+            } else if (A == 1) {
+                gugun = "해운대구";
+            } else if (A == 2) {
+                gugun = "진구";
+            } else if (A == 3) {
+                gugun = "연제구";
+            } else if (A == 4) {
+                gugun = "수영구";
+            } else if (A == 5) {
+                gugun = "동래구";
+            } else if (A == 6) {
+                gugun = "금정구";
+            } else if (A == 7) {
+                gugun = "강서구";
+            } else if (A == 8) {
+                gugun = "남구";
+            } else if (A == 9) {
+                gugun = "사하구";
+            } else {
+                gugun = "서구";
+            }
+            if (B == 0) {
+                start = "9";
+            } else if (B == 1) {
+                start = "10";
+            } else if (B == 2) {
+                start = "11";
+            } else if (B == 3) {
+                start = "12";
+            } else if (B == 4) {
+                start = "13";
+            } else if (B == 5) {
+                start = "14";
+            } else if (B == 6) {
+                start = "15";
+            } else if (B == 7) {
+                start = "16";
+            } else if (B == 8) {
+                start = "17";
+            } else if (B == 9) {
+                start = "18";
+            }
+            if (C == 0) {
+                end = "10";
+            } else if (C == 1) {
+                end = "11";
+            } else if (C == 2) {
+                end = "12";
+            } else if (C == 3) {
+                end = "13";
+            } else if (C == 4) {
+                end = "14";
+            } else if (C == 5) {
+                end = "15";
+            } else if (C == 6) {
+                end = "16";
+            } else if (C == 7) {
+                end = "17";
+            } else if (C == 8) {
+                end = "18";
+            }
+            if (D == 0) {
+                number = "1";
+            } else if (D == 1) {
+                number = "2";
+            } else if (D == 2) {
+                number = "3";
+            } else if (D == 3) {
+                number = "4";
+            }
+
+            UserReserveDao dao = new UserReserveDao();
+            dao.reserve2(id, gugun, start, end, number, E);
+            JOptionPane.showMessageDialog(null, "예약이 완료되었습니다.");
+        } catch (NamingException ex) {
+            Logger.getLogger(GUI__UserRideRental.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "정보를 다시 확인해주십시오.");
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI__UserRideRental.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "정보를 다시 확인해주십시오.");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI__UserRideRental.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "정보를 다시 확인해주십시오.");
         }
 
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -285,5 +328,7 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

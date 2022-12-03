@@ -63,13 +63,19 @@ public class GUI_UserReserveInquiry extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
                 "아이디", "구군", "시작시간", "종료시간", "대여 대수", "날짜", "승인여부"
             }
         ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("뒤로가기");
@@ -140,15 +146,12 @@ public class GUI_UserReserveInquiry extends javax.swing.JFrame {
         } catch (NamingException ex) {
             Logger.getLogger(GUI_UserRoadInquiry.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane M = new JOptionPane();
-            M.showMessageDialog(null, "정확한 정보를 입력해주시오.");
         } catch (SQLException ex) {
             Logger.getLogger(GUI_UserRoadInquiry.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane M = new JOptionPane();
-            M.showMessageDialog(null, "정확한 정보를 입력해주시오.");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_UserRoadInquiry.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane M = new JOptionPane();
-            M.showMessageDialog(null, "정확한 정보를 입력해주시오.");
         }
     }//GEN-LAST:event_formWindowOpened
 

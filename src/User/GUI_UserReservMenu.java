@@ -111,7 +111,7 @@ public class GUI_UserReservMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GUI__UserRideRental form = new GUI__UserRideRental();
+        GUI__UserRideRental form = new GUI__UserRideRental(id);
         form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
