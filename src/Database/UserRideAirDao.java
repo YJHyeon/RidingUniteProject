@@ -4,16 +4,17 @@
  */
 package Database;
 
-
 import java.sql.*;
 import javax.naming.NamingException;
 import java.util.*;
+
 /**
  *
  * @author pc
  */
 public class UserRideAirDao {
-        public ArrayList<UserRideAirObj> Air(String gugun) throws NamingException, SQLException, ClassNotFoundException {
+
+    public ArrayList<UserRideAirObj> Air(String gugun) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
 
@@ -38,6 +39,34 @@ public class UserRideAirDao {
         return users;
 
     }
+
+    public ArrayList<UserRideAirObj> Air2(String gugun) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        ArrayList<UserRideAirObj> users = new ArrayList<UserRideAirObj>();
+        UserRideAirObj user = null;
+    String sql = "SELECT * FROM RideAir WHERE gugun like ?";
+        
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,"%"+ gugun+"%");
+        rs = pstmt.executeQuery();
+        while (rs.next()) {
+            user = new UserRideAirObj();
+            user.setGugun(rs.getString("gugun"));
+            user.setPumpGubun(rs.getString("pumpGubun"));
+            user.setPumpCnt(rs.getString("pumpCnt"));
+            user.setSpot(rs.getString("spot"));
+            users.add(user);
+        }
+
+        return users;
+
+    }
+
     public int insertData(String gugun, String pumpGubun, String pumpCnt, String spot) throws NamingException, SQLException, ClassNotFoundException {
 
         int result = 0;
@@ -62,8 +91,8 @@ public class UserRideAirDao {
 
         return result;
     }
-    
-     public void deleteData(String gugun, String pumpGubun, String pumpCnt, String spot) throws NamingException, SQLException, ClassNotFoundException {
+
+    public void deleteData(String gugun, String pumpGubun, String pumpCnt, String spot) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
         PreparedStatement pstmt = null;
@@ -72,21 +101,20 @@ public class UserRideAirDao {
         String sql = "DELETE FROM RideAir WHERE gugun=? AND pumpGubun=? AND pumpCnt = ? AND SPOT =?;";
 
         pstmt = conn.prepareStatement(sql);
-        
+
         pstmt.setString(1, gugun);
         pstmt.setString(2, pumpGubun);
         pstmt.setString(3, pumpCnt);
         pstmt.setString(4, spot);
 
         //pstmt.setString(4, spot);
-
         int count = pstmt.executeUpdate();
 
         pstmt.close();
         DBConn.close();
 
     }
-     
+
     public void updateData(String gugun, String pumpGubun, String pumpCnt, String spot, String gugun1, String pumpGubun2, String pumpCnt3, String spot4) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
@@ -109,6 +137,5 @@ public class UserRideAirDao {
         int r = pstmt.executeUpdate();
 
     }
-    
-}
 
+}

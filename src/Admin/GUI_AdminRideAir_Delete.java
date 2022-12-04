@@ -4,7 +4,6 @@
  */
 package Admin;
 
-
 import User.*;
 import Database.UserRideAirDao;
 import Database.UserRideAirObj;
@@ -42,7 +41,7 @@ public class GUI_AdminRideAir_Delete extends javax.swing.JFrame {
      */
     public GUI_AdminRideAir_Delete() {
         initComponents();
-        this.setResizable(false);   
+        this.setResizable(false);
     }
 
     /**
@@ -131,35 +130,34 @@ public class GUI_AdminRideAir_Delete extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(169, 169, 169)
-                                        .addComponent(jLabel1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(91, 91, 91)
-                                        .addComponent(jLabel2)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton3))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(169, 169, 169)
+                                                .addComponent(jLabel1))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(91, 91, 91)
+                                                .addComponent(jLabel2)))
+                                        .addGap(96, 96, 96))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 43, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(jButton3)))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,8 +175,8 @@ public class GUI_AdminRideAir_Delete extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -199,23 +197,51 @@ public class GUI_AdminRideAir_Delete extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         UserRideAirDao rideair_delete = new UserRideAirDao();
-        try{
+        try {
             String A = jTextField1.getText();
             String B = jTextField2.getText();
             String C = jTextField3.getText();
             String D = jTextField4.getText();
-            
 
-            rideair_delete.deleteData(A,B,C,D);
+            rideair_delete.deleteData(A, B, C, D);
 
             JOptionPane.showMessageDialog(null, "삭제 완료!", "삭제", 1);
-        } catch(Exception e){
+            inittable();
+        } catch (Exception e) {
             jLabel2.setText("입력하신 정보가 맞지 않습니다.");
             jLabel2.setForeground(Color.red);
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
+    private void inittable() {
+        try {
+            // TODO add your handling code here:
+            String A = jTextField1.getText();
+            m = (DefaultTableModel) jTable1.getModel();
+            m.setNumRows(0); // 검색 버튼 계속 입력해도 초기화 시켜서 중복 없앰
 
+            UserRideAirDao dao = new UserRideAirDao();
+            ArrayList<UserRideAirObj> users = dao.Air(A);
+
+            for (UserRideAirObj user : users) {
+                str[0] = user.getGugun();
+                str[1] = user.getPumpGubun();
+                str[2] = user.getPumpCnt();
+                str[3] = user.getSpot();
+
+                m.insertRow(jTable1.getRowCount(), str);
+                jTable1.updateUI();
+
+            }
+        } catch (NamingException ex) {
+            Logger.getLogger(GUI_UserRidingAirInfor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_UserRidingAirInfor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_UserRidingAirInfor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
@@ -266,15 +292,11 @@ public class GUI_AdminRideAir_Delete extends javax.swing.JFrame {
         String selectrow3 = (String) jTable1.getValueAt(row, 3);
         String select0col = (String) jTable1.getColumnName(col);
 
-        
         jTextField1.setText(selectrow0);
         jTextField2.setText(selectrow1);
         jTextField3.setText(selectrow2);
         jTextField4.setText(selectrow3);
-        
-        
-        
-        
+
 
     }//GEN-LAST:event_jTable1MouseClicked
 

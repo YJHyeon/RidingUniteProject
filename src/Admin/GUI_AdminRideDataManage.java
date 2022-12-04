@@ -15,7 +15,7 @@ public class GUI_AdminRideDataManage extends javax.swing.JFrame {
      */
     public GUI_AdminRideDataManage() {
         initComponents();
-        this.setResizable(false);   
+        this.setResizable(false);
     }
 
     /**
@@ -84,8 +84,18 @@ public class GUI_AdminRideDataManage extends javax.swing.JFrame {
         });
 
         jButton6.setText("삭제");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("수정");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +160,7 @@ public class GUI_AdminRideDataManage extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -177,7 +188,21 @@ public class GUI_AdminRideDataManage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        GUI_AdminRoad_Insert form = new GUI_AdminRoad_Insert();
+        form.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        GUI_AdminRoad_Delete form = new GUI_AdminRoad_Delete();
+        form.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        GUI_AdminRoad_Update form = new GUI_AdminRoad_Update();
+        form.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

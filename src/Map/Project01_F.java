@@ -8,7 +8,6 @@ package Map;
  *
  * @author asde4
  */
-import User.GUI_UserRidingAirInfor;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -20,22 +19,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Project01_F {
-    String A;
+
     JTextField address;
     JLabel resAddress, resX, resY, jibunAddress;
     JLabel imageLabel;
-    
-    
+
     public void initGUI() {
         JFrame frm = new JFrame("Map View");                    // 프레임 생성
-        frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     // 프레임의 X 클릭 시 종료.
+        frm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);     // 프레임의 X 클릭 시 종료.
         Container c = frm.getContentPane();                     // JFrame 안쪽 영역.
-
+        frm.setLocationRelativeTo(null);
         imageLabel = new JLabel("지도보기");                    // JFrame 안쪽 영역 상단에 들어갈 지도보기
         JPanel pan = new JPanel();
         JLabel addressLbl = new JLabel("주소입력");             // JFrame 안쪽 영역 상단에 들어갈 주소입력
         address = new JTextField(50);
-        address.setText(A);
         JButton btn = new JButton("클릭");                      // JFrame 안쪽 영역에 들어갈 클릭 버튼
         pan.add(addressLbl);
         pan.add(address);
@@ -61,7 +58,7 @@ public class Project01_F {
 
     }
 
-    public static void main(String[] args, String A) {
+    public static void main(String[] args) {
         new Project01_F().initGUI();
     }
 }

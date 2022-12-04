@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI_AdminRoad;
+package Admin;
 
 import User.*;
 import Database.UserRideRoadDao;
@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kiano
@@ -29,15 +30,14 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
     String gugunNm, startSpot, endSpot, total;
     String str[] = new String[4];
     public static String id;
-    
+
     public GUI_AdminRoad_Delete(String id) {
         this.id = id;
         initComponents();
     }
-    
+
     public GUI_AdminRoad_Delete() {
         initComponents();
-        this.setResizable(false);   
     }
 
     /**
@@ -60,8 +60,20 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
+        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
         jLabel1.setText("자전거도로 삭제");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,14 +93,14 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("삭제");
+        jButton1.setText("뒤로가기");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("뒤로가기");
+        jButton2.setText("삭제");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -99,51 +111,49 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(142, 142, 142))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)))
+                        .addGap(109, 109, 109)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(15, 15, 15))
+                    .addComponent(jButton2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -174,33 +184,32 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        UserRideRoadDao rideRoad_delete = new UserRideRoadDao();
-        try{
+        UserRideRoadDao rideroad_update = new UserRideRoadDao();
+        try {
             String A = jTextField1.getText();
             String B = jTextField2.getText();
             String C = jTextField3.getText();
             String D = jTextField4.getText();
-            
-            
-            rideRoad_delete.deleteData(A, B, C, D);
+
+            rideroad_update.deleteData(A, B, C, D);
 
             JOptionPane.showMessageDialog(null, "삭제 완료!", "삭제", 1);
-        } catch(Exception e){
+            inittable();
+        } catch (Exception e) {
             jLabel1.setText("입력하신 정보가 맞지 않습니다.");
             jLabel1.setForeground(Color.red);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
-        // TODO add your handling code here:
+    private void inittable() {
         try {
             // TODO add your handling code here:
+
             String A = jTextField1.getText();
             m = (DefaultTableModel) jTable1.getModel();
             m.setNumRows(0); // 검색 버튼 계속 입력해도 초기화 시켜서 중복 없앰
 
             UserRideRoadDao dao = new UserRideRoadDao();
-            ArrayList<UserRideRoadObj> users = dao.inquiry(A);
+            ArrayList<UserRideRoadObj> users = dao.inquiry2(A);
 
             for (UserRideRoadObj user : users) {
                 str[0] = user.getGugunNm();
@@ -214,16 +223,28 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
             }
         } catch (NamingException ex) {
             Logger.getLogger(GUI_UserRoadInquiry.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane M = new JOptionPane();
+            M.showMessageDialog(null, "정확한 정보를 입력해주시오.");
         } catch (SQLException ex) {
             Logger.getLogger(GUI_UserRoadInquiry.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane M = new JOptionPane();
+            M.showMessageDialog(null, "정확한 정보를 입력해주시오.");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_UserRoadInquiry.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane M = new JOptionPane();
+            M.showMessageDialog(null, "정확한 정보를 입력해주시오.");
         }
-
-
     }
-    
-    private void jTable1MouseClicked2(java.awt.event.MouseEvent evt) {                                     
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        inittable();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTable1MouseClicked2(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
 
         row = jTable1.getSelectedRow();
@@ -237,13 +258,13 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
         String selectrow3 = (String) jTable1.getValueAt(row, 3);
         String select0col = (String) jTable1.getColumnName(col);
 
-        
         jTextField1.setText(selectrow0);
         jTextField2.setText(selectrow1);
         jTextField3.setText(selectrow2);
         jTextField4.setText(selectrow3);
 
     }
+
     /**
      * @param args the command line arguments
      */
