@@ -29,6 +29,7 @@ public class GUI_UserInfor extends javax.swing.JFrame {
      */
     public GUI_UserInfor() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**

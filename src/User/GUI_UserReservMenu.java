@@ -20,6 +20,7 @@ public class GUI_UserReservMenu extends javax.swing.JFrame {
      */
     public GUI_UserReservMenu() {
         initComponents();
+        this.setResizable(false); 
     }
 
     /**

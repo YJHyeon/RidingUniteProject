@@ -35,6 +35,7 @@ public class GUI_UserReserveInquiry extends javax.swing.JFrame {
      */
     public GUI_UserReserveInquiry() {
         initComponents();
+        this.setResizable(false); 
     }
 
     /**

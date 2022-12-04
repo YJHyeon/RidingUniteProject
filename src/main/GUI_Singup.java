@@ -22,6 +22,7 @@ public class GUI_Singup extends javax.swing.JFrame {
      */
     public GUI_Singup() {
         initComponents();
+        setResizable(false);this.setResizable(false);   
     }
 
     /**

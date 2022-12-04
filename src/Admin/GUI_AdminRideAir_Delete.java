@@ -42,6 +42,7 @@ public class GUI_AdminRideAir_Delete extends javax.swing.JFrame {
      */
     public GUI_AdminRideAir_Delete() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**

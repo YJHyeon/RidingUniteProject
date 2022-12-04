@@ -233,7 +233,34 @@ public class GUI_AdminRideAir_Change extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+    private void  inittable(){
+        try {
+            // TODO add your handling code here:
+            String A = jTextField1.getText();
+            m = (DefaultTableModel) jTable1.getModel();
+            m.setNumRows(0); // 검색 버튼 계속 입력해도 초기화 시켜서 중복 없앰
 
+            UserRideAirDao dao = new UserRideAirDao();
+            ArrayList<UserRideAirObj> users = dao.Air(A);
+
+            for (UserRideAirObj user : users) {
+                str[0] = user.getGugun();
+                str[1] = user.getPumpGubun();
+                str[2] = user.getPumpCnt();
+                str[3] = user.getSpot();
+
+                m.insertRow(jTable1.getRowCount(), str);
+                jTable1.updateUI();
+
+            }
+        } catch (NamingException ex) {
+            Logger.getLogger(GUI_UserRidingAirInfor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_UserRidingAirInfor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_UserRidingAirInfor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -255,6 +282,7 @@ public class GUI_AdminRideAir_Change extends javax.swing.JFrame {
             rideair_update.updateData(A,B,C,D,E,F,G,H);
 
             JOptionPane.showMessageDialog(null, "수정 완료!", "수정", 1);
+            inittable();
         } catch(Exception e){
             jLabel2.setText("입력하신 정보가 맞지 않습니다.");
             jLabel2.setForeground(Color.red);

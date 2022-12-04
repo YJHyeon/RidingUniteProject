@@ -262,19 +262,18 @@ public class GUI_AdminManage_Change extends javax.swing.JFrame {
             Admin_change.updateData(A, B, C, D, E, F, G, H, I, J, K, L);
 
             JOptionPane.showMessageDialog(null, "수정 완료!", "수정", 1);
-        } catch (Exception e) {
+            inittable();
+        
+        } 
+        
+        catch (Exception e) {
             jLabel2.setText("입력하신 정보가 맞지 않습니다.");
             jLabel2.setForeground(Color.red);
         }
+        
 
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+    private void  inittable(){
         try {
             // TODO add your handling code here:
             String A = jTextField1.getText();
@@ -303,6 +302,17 @@ public class GUI_AdminManage_Change extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_AdminManage_Change.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
+    }
+    
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        inittable();
+        
 
 
     }//GEN-LAST:event_formWindowOpened

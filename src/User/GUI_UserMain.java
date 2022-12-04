@@ -24,7 +24,7 @@ public class GUI_UserMain extends javax.swing.JFrame {
      */
     public GUI_UserMain() {
         initComponents();
-        setResizable(false);
+        this.setResizable(false);   
     }
 
     /**

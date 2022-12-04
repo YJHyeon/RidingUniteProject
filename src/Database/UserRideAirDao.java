@@ -22,10 +22,9 @@ public class UserRideAirDao {
 
         ArrayList<UserRideAirObj> users = new ArrayList<UserRideAirObj>();
         UserRideAirObj user = null;
-        String sql = "SELECT * FROM RideAir WHERE gugun like ?";
+        String sql = "SELECT * FROM RideAir";
 
         pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1,"%"+ gugun+"%");
         rs = pstmt.executeQuery();
         while (rs.next()) {
             user = new UserRideAirObj();

@@ -22,6 +22,7 @@ public class GUI_AdminRideAir_Insert extends javax.swing.JFrame {
      */
     public GUI_AdminRideAir_Insert() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**

@@ -15,6 +15,7 @@ public class GUI_AdminRideDataManage extends javax.swing.JFrame {
      */
     public GUI_AdminRideDataManage() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**

@@ -39,6 +39,7 @@ public class GUI_UserRidingAirInfor extends javax.swing.JFrame {
      */
     public GUI_UserRidingAirInfor() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**

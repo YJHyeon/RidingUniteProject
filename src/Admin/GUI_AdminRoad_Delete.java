@@ -37,6 +37,7 @@ public class GUI_AdminRoad_Delete extends javax.swing.JFrame {
     
     public GUI_AdminRoad_Delete() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**

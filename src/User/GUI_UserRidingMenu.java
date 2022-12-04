@@ -22,6 +22,7 @@ public class GUI_UserRidingMenu extends javax.swing.JFrame {
      */
     public GUI_UserRidingMenu() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**

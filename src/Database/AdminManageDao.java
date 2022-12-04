@@ -26,10 +26,10 @@ public class AdminManageDao {
 
         ArrayList<AdminManageObj> users = new ArrayList<AdminManageObj>();
         AdminManageObj user = null;
-        String sql = "SELECT * FROM Member WHERE ID like ?";
+        String sql = "SELECT * FROM Member";
 
         pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1,"%"+ ID+"%");
+        
         rs = pstmt.executeQuery();
         while (rs.next()) {
             user = new AdminManageObj();

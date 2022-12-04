@@ -41,6 +41,7 @@ public class GUI_AdminManage_Delete extends javax.swing.JFrame {
      */
     public GUI_AdminManage_Delete() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**
@@ -227,13 +228,44 @@ public class GUI_AdminManage_Delete extends javax.swing.JFrame {
             Admin_delete.deleteData(A,B,C,D,E,F);
 
             JOptionPane.showMessageDialog(null, "삭제 완료!", "삭제", 1);
+            inittable();
         } catch(Exception e){
             jLabel2.setText("입력하신 정보가 맞지 않습니다.");
             jLabel2.setForeground(Color.red);
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
+    private void  inittable(){
+        try {
+            // TODO add your handling code here:
+            String Z= jTextField1.getText();
+            m = (DefaultTableModel) jTable1.getModel();
+            m.setNumRows(0); // 검색 버튼 계속 입력해도 초기화 시켜서 중복 없앰
 
+            AdminManageDao dao = new AdminManageDao();
+            ArrayList<AdminManageObj> users = dao.Manage(Z);
+
+            for (AdminManageObj user : users) {
+                str[0] = user.getId();
+                str[1] = user.getName();
+                str[2] = user.getPw();
+                str[3] = user.getTel();
+                str[4] = user.getEmail();
+                str[5] = user.getAdminchk();
+
+                m.insertRow(jTable1.getRowCount(), str);
+                jTable1.updateUI();
+
+            }
+        } catch (NamingException ex) {
+            Logger.getLogger(GUI_AdminManage_Delete.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_AdminManage_Delete.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_AdminManage_Delete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed

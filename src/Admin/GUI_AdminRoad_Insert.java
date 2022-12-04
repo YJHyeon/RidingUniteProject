@@ -23,6 +23,7 @@ public class GUI_AdminRoad_Insert extends javax.swing.JFrame {
      */
     public GUI_AdminRoad_Insert() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**

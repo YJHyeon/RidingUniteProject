@@ -31,6 +31,7 @@ public class GUI__UserRideRental extends javax.swing.JFrame {
      */
     public GUI__UserRideRental() {
         initComponents();
+        this.setResizable(false);  
     }
 
     /**

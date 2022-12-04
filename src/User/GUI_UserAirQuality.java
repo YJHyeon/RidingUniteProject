@@ -27,11 +27,12 @@ public class GUI_UserAirQuality extends javax.swing.JFrame {
 
     public GUI_UserAirQuality(String id) {
         this.id = id;
-        initComponents();
+        initComponents();  
     }
 
     private GUI_UserAirQuality() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        initComponents();
+        this.setResizable(false); 
     }
 
     /**

@@ -35,6 +35,7 @@ public class GUI_UserRoadInquiry extends javax.swing.JFrame {
      */
     public GUI_UserRoadInquiry() {
         initComponents();
+        this.setResizable(false);  
     }
 
     /**

@@ -32,6 +32,7 @@ public class GUI_AdminRentalAccept extends javax.swing.JFrame {
      */
     public GUI_AdminRentalAccept() {
         initComponents();
+        this.setResizable(false);   
     }
 
     /**
