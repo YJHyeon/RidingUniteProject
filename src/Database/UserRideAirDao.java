@@ -87,6 +87,29 @@ public class UserRideAirDao {
         DBConn.close();
 
     }
+     
+    public void updateData(String gugun, String pumpGubun, String pumpCnt, String spot, String gugun1, String pumpGubun2, String pumpCnt3, String spot4) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "update RideAir SET gugun=?, pumpGubun=?,pumpCnt = ? , SPOT =? Where gugun=? and pumpGubun=? and pumpCnt = ? and SPOT =?;";
+
+        pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(5, gugun);
+        pstmt.setString(6, pumpGubun);
+        pstmt.setString(7, pumpCnt);
+        pstmt.setString(8, spot);
+        pstmt.setString(1, gugun1);
+        pstmt.setString(2, pumpGubun2);
+        pstmt.setString(3, pumpCnt3);
+        pstmt.setString(4, spot4);
+
+        int r = pstmt.executeUpdate();
+
+    }
     
 }
 

@@ -55,6 +55,40 @@ public class UserReserveDao {
 
     }
 
+    public ArrayList<UserReserveObj> inquiry2(String id) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        ArrayList<UserReserveObj> users = new ArrayList<UserReserveObj>();
+        UserReserveObj user = null;
+        String sql = "SELECT * FROM RidingReservation";
+
+        pstmt = conn.prepareStatement(sql);
+
+        rs = pstmt.executeQuery();
+        while (rs.next()) {
+            user = new UserReserveObj();
+            user.setId(rs.getString("id"));
+            user.setGugun(rs.getString("gugun"));
+            user.setStart(rs.getString("start"));
+            user.setEnd(rs.getString("end"));
+            user.setNumber(rs.getString("number"));
+            user.setDate(rs.getString("date"));
+            user.setChk(rs.getString("chk"));
+            users.add(user);
+        }
+
+        rs.close();
+        pstmt.close();
+        DBConn.close();
+
+        return users;
+
+    }
+
     public void reserve2(String id, String gugun, String start, String end, String number, String date) throws NamingException, SQLException, ClassNotFoundException {
 
         Connection conn = DBConn.getConnection();
@@ -77,6 +111,24 @@ public class UserReserveDao {
         //rs.close();
         pstmt.close();
         DBConn.close();
+    }
+
+    public void updateCHK(String id, String date, String chk) throws NamingException, SQLException, ClassNotFoundException {
+
+        Connection conn = DBConn.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "UPDATE RidingReservation SET CHK=1 where ID =? AND Date=? AND CHK=?";
+
+        pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, id);
+        pstmt.setString(2, date);
+        pstmt.setString(3, chk);
+
+        int r = pstmt.executeUpdate();
+
     }
 
 }
